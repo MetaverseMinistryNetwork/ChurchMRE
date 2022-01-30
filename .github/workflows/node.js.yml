@@ -24,7 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: pkill -x node
+    - run: pkill -x node > /dev/null 2> /dev/null < /dev/null & # Silently run, ignore no process error
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm start > /dev/null 2> /dev/null < /dev/null &
+    - run: npm start > /dev/null 2> /dev/null < /dev/null & # Silently run
