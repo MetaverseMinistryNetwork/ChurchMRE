@@ -24,6 +24,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - run: pkill -x node
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm start
+    - run: npm start > /dev/null 2> /dev/null < /dev/null &
